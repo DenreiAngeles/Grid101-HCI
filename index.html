@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid 101</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo-container">
+            <a href="#home" style="text-decoration: none; color: inherit; display: block;">
+                <div class="logo-text">GRID<span class="logo-highlight">101</span></div>
+            </a>
+        </div>
+        <div class="system-status">System: Online</div>
+
+        <nav role="navigation" aria-label="Main Menu">
+            <ul>
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#garage" class="nav-link">Learning Hub</a></li>
+                <li><a href="#quiz" class="nav-link">Quiz</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- S1: HERO -->
+        <section id="home" class="magazine-hero">
+            <div class="hero-bg-slash"></div>
+            <div class="hero-decoration-plus">++++</div>
+
+            <div class="hero-text-left">
+                <div class="hero-subtitle">// THE ROOKIE TO PRO MANUAL</div>
+                <h1>THE ART OF <br><span class="outlined-text">SPEED</span></h1>
+
+                <div class="team-selector-container">
+                    <span class="selector-label">SELECT TEAM DATA:</span>
+                    <div class="team-buttons">
+                        <button class="team-logo-btn active" onclick="changeTeam('redbull')" aria-label="Red Bull"
+                            style="background-color: #3671C6;">
+                            <img src="assets/logos/redbullracing.avif" alt="Red Bull Logo">
+                        </button>
+                        <button class="team-logo-btn" onclick="changeTeam('ferrari')" aria-label="Ferrari"
+                            style="background-color: #E80020;">
+                            <img src="assets/logos/ferrari.avif" alt="Ferrari Logo">
+                        </button>
+                        <button class="team-logo-btn" onclick="changeTeam('mercedes')" aria-label="Mercedes"
+                            style="background-color: #00D2BE;">
+                            <img src="assets/logos/mercedes.avif" alt="Mercedes Logo">
+                        </button>
+                        <button class="team-logo-btn" onclick="changeTeam('mclaren')" aria-label="McLaren"
+                            style="background-color: #FF8700;">
+                            <img src="assets/logos/mclaren.avif" alt="McLaren Logo">
+                        </button>
+                        <button class="team-logo-btn" onclick="changeTeam('astonmartin')" aria-label="Aston Martin"
+                            style="background-color: #229971;">
+                            <img src="assets/logos/astonmartin.avif" alt="Aston Martin Logo">
+                        </button>
+
+                        <button class="team-logo-btn" onclick="changeTeam('alpine')" aria-label="Alpine"
+                            style="background-color: #0090FF;">
+                            <img src="assets/logos/alpine.avif" alt="Alpine Logo">
+                        </button>
+                        <button class="team-logo-btn" onclick="changeTeam('williams')" aria-label="Williams"
+                            style="background-color: #64C4FF;">
+                            <img src="assets/logos/williams.avif" alt="Williams Logo">
+                        </button>
+                        <button class="team-logo-btn" onclick="changeTeam('rb')" aria-label="RB"
+                            style="background-color: #1634CB;">
+                            <img src="assets/logos/racingbulls.avif" alt="VCARB Logo">
+                        </button>
+                        <button class="team-logo-btn" onclick="changeTeam('sauber')" aria-label="Sauber"
+                            style="background-color: #52E252;">
+                            <img src="assets/logos/kicksauber.avif" alt="Sauber Logo">
+                        </button>
+                        <button class="team-logo-btn" onclick="changeTeam('haas')" aria-label="Haas"
+                            style="background-color: #E80020;">
+                            <img src="assets/logos/haas.avif" alt="Haas Logo">
+                        </button>
+                    </div>
+                </div>
+
+                <div class="team-drivers-display">
+                    <span class="selector-label">ACTIVE PILOTS:</span>
+                    <h3 id="hero-driver-names"
+                        style="color: var(--color-primary); font-size: 1.5rem; transition: opacity 0.3s; line-height: 1.2;">
+                        Max Verstappen (1) <br>Yuki Tsunoda (22)
+                    </h3>
+                </div>
+
+                <a href="#garage" class="fui-button">START LEARNING</a>
+            </div>
+
+            <div class="hero-image-container">
+                <img id="hero-car" src="assets/cars/2025redbullracingcarright.avif" alt="F1 Car Hero" class="f1-car-img"
+                    onerror="this.src='https://placehold.co/900x300/transparent/FF1801?text=SIDE+VIEW+CAR'"
+                    style="transition: opacity 0.3s ease, transform 0.5s ease;">
+                <div id="hero-team-label" class="team-label-style">RED BULL RACING</div>
+            </div>
+
+            <div class="hero-description-bottom">
+                <strong style="color: white; opacity: 0.8;">[ GUIDE INIT ]</strong>
+                <p>Stop watching, start understanding. The interactive technical interface for decoding Formula 1
+                    regulations, tire strategy, and race flags.</p>
+            </div>
+
+            <div class="hero-text-right">
+                <div class="vertical-big">GRID 101</div>
+                <div class="vertical-small">EDUCATIONAL INTERFACE // 2025</div>
+                <div class="reticle-icon"></div>
+            </div>
+        </section>
+
+        <!-- S2: LEARNING HUB -->
+        <section id="garage" aria-labelledby="garage-title">
+            <div class="garage-header">
+                <h2 id="garage-title">The Learning Path</h2>
+                <p class="dim-text">Follow the phases to master F1 knowledge.</p>
+            </div>
+
+            <div class="tabs" role="tablist">
+                <button class="tab-btn active-tab" onclick="switchTab('essentials')" role="tab">1. Essentials</button>
+                <button class="tab-btn" onclick="switchTab('weekend')" role="tab">2. Weekend</button>
+                <button class="tab-btn" onclick="switchTab('mechanics')" role="tab">3. Mechanics</button>
+                <button class="tab-btn" onclick="switchTab('strategy')" role="tab">4. Strategy</button>
+                <button class="tab-btn" onclick="switchTab('guide')" role="tab">5. Intel</button>
+                <button class="tab-btn" onclick="switchTab('vocabs')" role="tab">6. Vocabs</button>
+            </div>
+
+            <!-- P1: ESSENTIALS -->
+            <div id="content-essentials" role="tabpanel">
+
+                <article class="text-block">
+                    <h3>What is Formula 1?</h3>
+                    <p>
+                        Formula 1 (F1) is the pinnacle of international motorsport. It is a global series of races,
+                        known as "Grand Prix" events, held on purpose-built circuits and public roads around the world.
+                        Unlike NASCAR or Touring Cars, F1 cars are <strong>"open-wheel"</strong> (wheels are outside the
+                        main body) and <strong>"single-seater"</strong>.
+                    </p>
+                    <div class="concept-highlight">
+                        <strong>The "Formula":</strong> A strict set of rules (weight, engine size, dimensions) that all
+                        teams must follow. The challenge is building the fastest possible car within these rules.
+                    </div>
+                </article>
+
+                <article class="text-block">
+                    <h3><span class="icon">🏁</span> The Grid Composition</h3>
+                    <p>
+                        The F1 grid is strictly limited to <strong>10 Teams</strong>.
+                        Each team is required to field exactly <strong>2 cars</strong>.
+                    </p>
+                    <div
+                        style="background: #F3F4F6; padding: 1rem; border-radius: 4px; display: flex; justify-content: space-around; text-align: center; margin-top: 1rem;">
+                        <div>
+                            <strong style="display: block; font-size: 2rem; color: var(--color-primary);">10</strong>
+                            <span
+                                style="font-size: 0.8rem; text-transform: uppercase; color: var(--color-dim);">Teams</span>
+                        </div>
+                        <div>
+                            <strong style="display: block; font-size: 2rem; color: var(--color-primary);">20</strong>
+                            <span
+                                style="font-size: 0.8rem; text-transform: uppercase; color: var(--color-dim);">Drivers</span>
+                        </div>
+                    </div>
+                    <p style="margin-top: 1rem;">
+                        Because there are only 20 seats available in the entire world, F1 is considered the most
+                        exclusive club in sports. Drivers fighting for a seat must bring immense talent (or sometimes
+                        immense sponsorship money).
+                    </p>
+                </article>
+
+                <article class="text-block">
+                    <h3><span class="icon">🏆</span> The Two Wars</h3>
+                    <p>Every race weekend, two completely separate championships are being fought simultaneously. This
+                        is unique to motorsport and creates the central tension of the sport. The points below reflect
+                        the current active team.</p>
+
+                    <div id="championship-viewer"
+                        style="margin-top: 1.5rem; background: #F3F4F6; padding: 1.5rem; border-radius: 8px;">
+
+                        <div class="toggle-control"
+                            style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem;">
+                            <button id="btn-drivers" class="fui-button small-button"
+                                onclick="showChampionship('drivers')">Drivers' Championship</button>
+                            <button id="btn-constructors" class="fui-button small-button secondary"
+                                onclick="showChampionship('constructors')">Constructors' Championship</button>
+                        </div>
+
+                        <div id="view-drivers" style="display: flex; justify-content: center; flex-wrap: wrap;">
+                            <h4
+                                style="color: var(--color-primary); margin-bottom: 0.5rem; text-align: center; width: 100%;">
+                                Drivers' Championship (The Glory)</h4>
+                            <p
+                                style="text-align: center; color: var(--color-dim); font-size: 0.9rem; margin-bottom: 1rem; width: 100%;">
+                                Points track individual performance. Only the driver's own points count.</p>
+
+                            <div class="stat-box-large">
+                                <div id="driver1-value" class="stat-value">315</div>
+                                <div id="driver1-label" class="stat-label">MAX VERSTAPPEN</div>
+                            </div>
+                            <div class="stat-box-large">
+                                <div id="driver2-value" class="stat-value">290</div>
+                                <div id="driver2-label" class="stat-label">YUKI TSUNODA</div>
+                            </div>
+                        </div>
+
+                        <div id="view-constructors" style="display: none;">
+                            <h4 style="color: var(--color-primary); margin-bottom: 0.5rem; text-align: center;">
+                                Constructors' Championship (The Money)</h4>
+                            <p
+                                style="text-align: center; color: var(--color-dim); font-size: 0.9rem; margin-bottom: 1rem; width: 100%;">
+                                Points combine both team drivers' scores to determine the prize money.</p>
+
+                            <div style="display: flex; justify-content: center;">
+                                <div class="stat-box-large" style="min-width: 200px;">
+                                    <div id="constructor-value" class="stat-value">605</div>
+                                    <div class="stat-label">TEAM TOTAL POINTS</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <div
+                    style="display: flex; justify-content: center; align-items: flex-start; flex-direction: column; gap: 2rem;">
+
+                    <div class="tech-insight"
+                        style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+                        <h4>The Points System</h4>
+                        <p style="margin-bottom: 10px;">Only the Top 10 finish score points.</p>
+
+                        <div class="points-board">
+                            <div class="pb-header">
+                                <span class="pb-pos">Pos</span>
+                                <span class="pb-pts">Points</span>
+                            </div>
+
+                            <div class="pb-row pb-winner">
+                                <span class="pb-pos">1</span>
+                                <span class="pb-pts">25</span>
+                            </div>
+
+                            <div class="pb-row">
+                                <span class="pb-pos">2</span>
+                                <span class="pb-pts">18</span>
+                            </div>
+
+                            <div class="pb-row">
+                                <span class="pb-pos">3</span>
+                                <span class="pb-pts">15</span>
+                            </div>
+
+                            <div class="pb-row">
+                                <span class="pb-pos">4</span>
+                                <span class="pb-pts">12</span>
+                            </div>
+
+                            <div class="pb-row">
+                                <span class="pb-pos">5</span>
+                                <span class="pb-pts">10</span>
+                            </div>
+
+                            <div class="pb-row pb-small">
+                                <span class="pb-pos">6</span>
+                                <span class="pb-pts">8</span>
+                            </div>
+                            <div class="pb-row pb-small">
+                                <span class="pb-pos">7</span>
+                                <span class="pb-pts">6</span>
+                            </div>
+                            <div class="pb-row pb-small">
+                                <span class="pb-pos">8</span>
+                                <span class="pb-pts">4</span>
+                            </div>
+                            <div class="pb-row pb-small">
+                                <span class="pb-pos">9</span>
+                                <span class="pb-pts">2</span>
+                            </div>
+                            <div class="pb-row pb-small">
+                                <span class="pb-pos">10</span>
+                                <span class="pb-pts">1</span>
+                            </div>
+                        </div>
+
+                        <p
+                            style="font-size: 0.9rem; color: var(--color-dim); margin-top: 10px; border-top: 1px solid #eee; padding-top: 10px;">
+                            In the current format, only the top 10 finishers are awarded points.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- P2: WEEKEND -->
+            <div id="content-weekend" role="tabpanel" style="display: none;">
+
+                <article class="text-block" style="margin-bottom: 2rem;">
+                    <h3><span class="icon">📅</span> The Calendar: Not Every Weekend</h3>
+                    <p>
+                        F1 is a global logistics tour that runs from <strong>March to December</strong>.
+                        It is NOT held every single weekend.
+                    </p>
+                    <div class="weekend-stats-grid">
+                        <div style="background: #F3F4F6; padding: 1rem; border-radius: 4px;">
+                            <strong>Frequency:</strong> Typically every 2 weeks. Occasionally, they hold "Double
+                            Headers" (2 weeks in a row) or "Triple Headers" (3 weeks in a row) to save travel time.
+                        </div>
+                        <div style="background: #F3F4F6; padding: 1rem; border-radius: 4px;">
+                            <strong>The Volume:</strong> A modern season has roughly <strong>24 Races</strong> per year.
+                        </div>
+                    </div>
+                </article>
+
+                <div class="toggle-control"
+                    style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem;">
+                    <button id="btn-standard" class="fui-button small-button"
+                        onclick="showWeekendFormat('standard')">Standard Weekend</button>
+                    <button id="btn-sprint" class="fui-button small-button secondary"
+                        onclick="showWeekendFormat('sprint')">Sprint Weekend</button>
+                </div>
+
+                <div class="weekend-grid">
+                    <div id="schedule-standard" class="weekend-card active-schedule">
+                        <div class="day-header">STANDARD FORMAT</div>
+                        <p style="font-size: 0.9rem; color: var(--color-dim); margin-bottom: 1rem;">Most races follow
+                            this 3-day schedule.</p>
+                        <div class="session-row">
+                            <span class="session-name">Friday: Practice (FP1 & FP2)</span>
+                            <span class="session-desc">"FP" stands for Free Practice. Two 60-min sessions where teams
+                                run simulations to gather data. No points awarded.</span>
+                        </div>
+                        <div class="session-row">
+                            <span class="session-name">Saturday: FP3 & Qualifying</span>
+                            <span class="session-desc">
+                                Morning: FP3 (Final Practice). Afternoon: <strong>Qualifying</strong>.
+                                This determines the starting grid for Sunday. <strong>It is split into 3 segments (Q1,
+                                    Q2, Q3).</strong> In each part, the slowest drivers are eliminated until only the
+                                top 10 remain.
+                            </span>
+
+                            <div class="quali-visual-zone" style="display: block; margin-top: 15px;">
+                                <div
+                                    style="font-size: 0.8rem; text-transform: uppercase; color: var(--color-dim); margin-bottom: 8px; font-weight: bold; letter-spacing: 1px;">
+                                    The Knockout Structure:</div>
+
+                                <div class="quali-step"
+                                    style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                                    <div><span class="q-badge">Q1</span> <span style="font-size: 0.9rem;">18
+                                            Minutes</span></div>
+                                    <div style="font-size: 0.85rem; color: var(--color-text);">Start: 20 Cars &rarr;
+                                        <span style="color: #d32f2f; font-weight: bold;">Slowest 5 Eliminated
+                                            (P20-P16)</span>
+                                    </div>
+                                </div>
+
+                                <div class="quali-step"
+                                    style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                                    <div><span class="q-badge">Q2</span> <span style="font-size: 0.9rem;">15
+                                            Minutes</span></div>
+                                    <div style="font-size: 0.85rem; color: var(--color-text);">Reset: 15 Cars &rarr;
+                                        <span style="color: #d32f2f; font-weight: bold;">Slowest 5 Eliminated
+                                            (P15-P11)</span>
+                                    </div>
+                                </div>
+
+                                <div class="quali-step"
+                                    style="display: flex; justify-content: space-between; border: 1px solid var(--color-primary); background: rgba(255,255,255,0.8);">
+                                    <div><span class="q-badge active">Q3</span> <span style="font-size: 0.9rem;">12
+                                            Minutes</span></div>
+                                    <div style="font-size: 0.85rem; font-weight: bold; color: var(--color-primary);">Top
+                                        10 Shootout for Pole Position (P1)</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="session-row">
+                            <span class="session-name">Sunday: The Grand Prix</span>
+                            <span class="session-desc">The Main Event. ~305km distance. No more practice. Strategy, tire
+                                management, and racing courage decide the winner.</span>
+                        </div>
+                    </div>
+
+                    <div id="schedule-sprint" class="weekend-card" style="border-top-color: #FF8700; display: none;">
+                        <div class="day-header" style="color: #FF8700;">SPRINT FORMAT</div>
+
+                        <p style="margin-bottom: 0.5rem; line-height: 1.4;">
+                            Sprint Race is a short, intense <strong>100km race</strong> (lasting ~30 mins). Unlike the
+                            Grand Prix, there are <strong>no mandatory pit stops</strong>. It is a flat-out dash from
+                            lights out to the finish line.
+                        </p>
+
+                        <p style="font-size: 0.9rem; color: var(--color-dim); margin-bottom: 1rem;">
+                            <strong>Why?</strong> To add excitement. Held at 6 select tracks (e.g., Brazil, Austria).
+                            Replaces practice with meaningful racing action on Friday and Saturday.
+                        </p>
+
+                        <div class="session-row">
+                            <span class="session-name">Friday: FP1 & Sprint Quali</span>
+                            <span class="session-desc">One practice session only. Then straight into Sprint Qualifying
+                                shortened version) to set the grid for Saturday morning.</span>
+                        </div>
+                        <div class="session-row">
+                            <span class="session-name">Saturday: The Sprint & Main Quali</span>
+                            <span class="session-desc">Morning: <strong>The Sprint Race</strong> (Points for Top 8:
+                                8-7-6...). Afternoon: Main Qualifying for Sunday's race.</span>
+                        </div>
+                        <div class="session-row">
+                            <span class="session-name">Sunday: Grand Prix</span>
+                            <span class="session-desc">Standard main race event.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- P3: MECHANICS -->
+            <div id="content-mechanics" class="info-grid-container" role="tabpanel" style="display: none;">
+
+                <div class="drs-container">
+                    <div class="drs-visual" style="background: white; border: 1px solid #eee;">
+                        <img id="drs-img" src="assets/drs/close.png" alt="DRS Mechanism"
+                            style="width: 100%; height: 100%; object-fit: contain; transition: transform 0.1s;"
+                            onerror="this.src='https://placehold.co/200x200/F3F4F6/15151E?text=REAR+WING+(CLOSED)'">
+
+                        <div id="drs-status-text"
+                            style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.7); color: white; padding: 2px 8px; font-size: 0.7rem; border-radius: 4px;">
+                            CLOSED</div>
+                    </div>
+
+                    <div class="drs-controls">
+                        <h3>DRS (Drag Reduction System)</h3>
+                        <p>When within 1 second of a car, a driver opens the rear wing flap. Less air resistance = +15
+                            km/h speed.</p>
+
+
+                        <button class="fui-button" onmousedown="toggleDRS(true)" onmouseup="toggleDRS(false)"
+                            onmouseleave="toggleDRS(false)" ontouchstart="toggleDRS(true)" ontouchend="toggleDRS(false)"
+                            style="user-select: none; -webkit-user-select: none;">
+                            HOLD TO OPEN DRS
+                        </button>
+                    </div>
+                </div>
+
+
+                <div class="tech-insight" style="margin-top: 2rem;">
+                    <h3 style="border-bottom: 2px solid var(--color-primary); padding-bottom: 0.5rem;"
+                        class="tech-header-prominent">Tire Compounds & The "C-Scale"</h4>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <p><strong>The Dry Range (Slicks):</strong> There are actually 5 dry compounds in the
+                                Pirelli warehouse, named <strong>C1 (Hardest)</strong> to <strong>C5 (Softest)</strong>.
+                            </p>
+                            <p style="font-size: 0.9rem; color: var(--color-dim); margin-top: 5px;">
+                                For each race weekend, Pirelli chooses just 3 of these to bring to the track, labeling
+                                them Soft (Red), Medium (Yellow), and Hard (White).
+                            </p>
+                        </div>
+
+
+                        <div class="c-scale-visual">
+                            <div class="c-box c-c1">
+                                <strong>C1</strong><br><span style="font-size: 0.7rem;">Hardest</span>
+                            </div>
+                            <div class="c-box c-c2">
+                                <strong>C2</strong>
+                            </div>
+                            <div class="c-box c-c3">
+                                <strong>C3</strong>
+                            </div>
+                            <div class="c-box c-c4">
+                                <strong>C4</strong>
+                            </div>
+                            <div class="c-box c-c5">
+                                <strong>C5</strong><br><span style="font-size: 0.7rem;">Softest</span>
+                            </div>
+                        </div>
+
+
+
+                        <div class="tire-row">
+                            <div class="tire-card">
+                                <img src="assets/tires/soft.png" alt="Soft Tire" class="tire-img"
+                                    onerror="this.src='https://placehold.co/120x120/1e1e1e/ff3b30?text=SOFT'">
+                                <div class="tire-label" style="color: #ff3b30;">SOFT</div>
+                                <div class="tire-desc">Fastest / Dies Fast</div>
+                            </div>
+                            <div class="tire-card">
+                                <img src="assets/tires/medium.png" alt="Medium Tire" class="tire-img"
+                                    onerror="this.src='https://placehold.co/120x120/1e1e1e/ffe62b?text=MED'">
+                                <div class="tire-label" style="color: #ffe62b;">MED</div>
+                                <div class="tire-desc">The Benchmark</div>
+                            </div>
+                            <div class="tire-card">
+                                <img src="assets/tires/hard.png" alt="Hard Tire" class="tire-img"
+                                    onerror="this.src='https://placehold.co/120x120/1e1e1e/ffffff?text=HARD'">
+                                <div class="tire-label" style="color: #888;">HARD</div>
+                                <div class="tire-desc">Durable / Slow</div>
+                            </div>
+                        </div>
+
+
+                        <div class="tire-row"
+                            style="margin-top: 2rem; border-top: 1px dashed #ccc; padding-top: 1.5rem;">
+                            <div class="tire-card">
+                                <img src="assets/tires/inter.png" alt="Intermediate Tire" class="tire-img"
+                                    onerror="this.src='https://placehold.co/120x120/1e1e1e/39B54A?text=INTER'">
+                                <div class="tire-label" style="color: #39B54A;">INTER</div>
+                                <div class="tire-desc">
+                                    <strong>Damp Track</strong><br>Clears light water.
+                                </div>
+                            </div>
+                            <div class="tire-card">
+                                <img src="assets/tires/wet.png" alt="Wet Tire" class="tire-img"
+                                    onerror="this.src='https://placehold.co/120x120/1e1e1e/0088CE?text=WET'">
+                                <div class="tire-label" style="color: #0088CE;">WET</div>
+                                <div class="tire-desc">
+                                    <strong>Heavy Rain</strong><br>Displaces 85L/sec.
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+
+                <div class="info-grid flag-section" style="margin-top: 3rem;">
+
+                    <div style="grid-column: 1 / -1; margin-bottom: 1rem;">
+                        <h3 style="border-bottom: 2px solid var(--color-primary); padding-bottom: 0.5rem;">Race Control
+                            Signals</h3>
+                        <p style="color: var(--color-dim);">Click any flag card below to see the signal visualization.
+                        </p>
+                    </div>
+
+
+                    <div id="flag-visual-panel" class="flag-display-panel flag-green" style="grid-column: 1 / -1;">
+                        <div id="flag-status-text" class="flag-status-text">TRACK CLEAR</div>
+                        <div id="flag-meaning-text" class="flag-meaning-text">The session is running normally and
+                            overtaking is permitted.</div>
+                    </div>
+
+
+                    <div class="flag-scroll-wrapper">
+                        <article class="info-card flag-card"
+                            onclick="showFlagVisual('green', 'TRACK CLEAR', 'The session is running normally and overtaking is permitted.')">
+                            <h3>Green Flag</h3>
+                            <div class="flag-visual flag-green"></div>
+                        </article>
+
+                        <article class="info-card flag-card"
+                            onclick="showFlagVisual('yellow', 'HAZARD AHEAD', 'Slow down immediately. No overtaking in the specified sector. Double Yellow: Be prepared to stop.')">
+                            <h3>Yellow Flag</h3>
+                            <div class="flag-visual flag-yellow"></div>
+                        </article>
+
+                        <article class="info-card flag-card"
+                            onclick="showFlagVisual('red', 'SESSION STOPPED', 'Major accident or bad weather. All cars must return to the pit lane immediately.')">
+                            <h3>Red Flag</h3>
+                            <div class="flag-visual flag-red"></div>
+                        </article>
+
+                        <article class="info-card flag-card"
+                            onclick="showFlagVisual('blue', 'LAPPED TRAFFIC', 'A faster car is behind you. You must let them pass immediately (ignore = penalty).')">
+                            <h3>Blue Flag</h3>
+                            <div class="flag-visual flag-blue"></div>
+                        </article>
+
+                        <article class="info-card flag-card"
+                            onclick="showFlagVisual('sc', 'SAFETY CAR / VIRTUAL SAFETY CAR', 'Full course neutralized (slowed). SC: Physical car leads. VSC: Drivers maintain a delta time.')">
+                            <h3>Safety Car / VSC</h3>
+                            <div class="flag-visual flag-sc">SC</div>
+                        </article>
+
+                        <article class="info-card flag-card"
+                            onclick="showFlagVisual('checkered', 'RACE ENDED', 'The race or session is over. The first car to cross the line wins the Grand Prix.')">
+                            <h3>Checkered Flag</h3>
+                            <div class="flag-visual flag-checkered"></div>
+                        </article>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- P4: STRATEGY -->
+            <div id="content-strategy" class="info-grid-container" role="tabpanel" style="display: none;">
+
+
+                <div class="info-card pit-radio-card" style="grid-column: 1 / -1;">
+                    <img src="assets/pit/pitlane.jpg" alt="Pit Lane" class="pit-image"
+                        onerror="this.src='https://placehold.co/150x100/cccccc/666666?text=PIT+LANE'">
+                    <div>
+                        <div
+                            style="font-size: 0.8rem; text-transform: uppercase; color: var(--color-dim); font-weight: bold; letter-spacing: 1px;">
+                            TEAM RADIO // LAP 24</div>
+                        <h3 style="margin-top: 5px; font-size: 1.8rem; color: var(--color-accent);">"BOX, BOX. BOX,
+                            BOX."</h3>
+                        <p style="margin-bottom: 10px;">
+                            This is the command to enter the pit lane. It comes from the German word
+                            <em>"Boxenstopp"</em>.
+                        </p>
+                        <p
+                            style="font-size: 0.9rem; background: white; padding: 10px; border-radius: 4px; display: inline-block;">
+                            <strong>The Golden Rule:</strong> In a dry race, you <strong>MUST</strong> stop at least
+                            once to change tire compounds (e.g., Swap Mediums for Hards).
+                        </p>
+                    </div>
+                </div>
+
+
+                <div style="margin-top: 2rem; margin-bottom: 1rem;">
+                    <h3
+                        style="border-bottom: 2px solid var(--color-primary); display: inline-block; padding-bottom: 5px;">
+                        Strategic Battles</h3>
+                </div>
+
+                <div class="info-grid">
+                    <article class="info-card">
+                        <h3>The Undercut</h3>
+                        <p class="strategy-slogan">Pit Early, Push Hard, Gain Track Position.</p>
+
+                        <div class="strat-visual-container">
+                            <div class="strategy-lane lane-blue">
+                                <span class="lane-label">LEADER (Pit Late)</span>
+                                <div class="time-delta time-loss">-2.5s Pit Loss</div>
+                            </div>
+                            <div class="strategy-lane lane-red">
+                                <span class="lane-label">CHASER (Pit Early)</span>
+                                <div class="time-delta time-gain">+3.0s Track Gain</div>
+                            </div>
+                            <div class="lane-result">Result: +0.5s gained</div>
+                        </div>
+
+                        <p class="strategy-explanation">The aggressor pits <strong>first</strong>. With fresh tires,
+                            they drive faster than the car ahead on old tires during the few laps immediately following
+                            the pit stop. By the time the leader stops, the aggressor has jumped ahead.</p>
+                    </article>
+
+                    <article class="info-card">
+                        <h3>The Overcut</h3>
+                        <p class="strategy-slogan">Stay Out, Clean Air, Maintain Lead.</p>
+
+                        <div class="strat-visual-container">
+                            <div class="strategy-lane lane-red">
+                                <span class="lane-label">LEADER (Pit Late)</span>
+                                <div class="time-delta time-gain">+2.0s Track Gain</div>
+                            </div>
+                            <div class="strategy-lane lane-blue">
+                                <span class="lane-label">CHASER (Pit Early)</span>
+                                <div class="time-delta time-loss">-2.5s Pit Loss</div>
+                            </div>
+                            <div class="lane-result">Result: -0.5s net loss</div>
+                        </div>
+
+                        <p class="strategy-explanation">The opposite of Undercut. You stay out <strong>longer</strong>
+                            while your rival pits. You use the few laps of clean air to push hard enough on old tires to
+                            stay ahead when you eventually pit. Less common, often used on street tracks.</p>
+                    </article>
+
+                    <article class="info-card">
+                        <h3>The Two-Stopper</h3>
+                        <p class="strategy-slogan">High Risk, High Reward.</p>
+
+                        <div class="two-stop-visual">
+                            <div class="stop-component component-loss">
+                                <span class="component-label">PIT LOSS</span>
+                                <span class="component-value">-40s</span>
+                            </div>
+                            <div class="stop-component component-gain">
+                                <span class="component-label">TRACK GAIN</span>
+                                <span class="component-value">+45s</span>
+                            </div>
+                            <div class="component-total">
+                                <span class="component-label">NET TIME</span>
+                                <span class="component-value net-gain">+5s</span>
+                            </div>
+                        </div>
+                        <p class="strategy-explanation"><strong>Maximum Attack.</strong> Instead of nursing tires to
+                            make them last, you drive flat-out and stop twice. You lose ~20s extra in the pits, but you
+                            must make it up by overtaking cars on track. Only viable when tire degradation is very high.
+                        </p>
+                    </article>
+                </div>
+
+
+                <div style="margin-top: 2rem; margin-bottom: 1rem;">
+                    <h3 class="tech-header-prominent">Race Control Penalties</h3>
+                    <p style="color: var(--color-dim);">Click a penalty below to see its time loss implication.</p>
+                </div>
+
+
+                <div id="penalty-visual-panel" class="penalty-display-panel penalty-5s" style="grid-column: 1 / -1;">
+                    <div id="penalty-status-text" class="penalty-status-text">5 SECOND PENALTY</div>
+                    <div id="penalty-meaning-text" class="penalty-meaning-text">Minor offense (e.g., track limits
+                        violation). Added to total race time.</div>
+                </div>
+
+                <div class="info-grid penalty-grid">
+
+
+                    <article class="info-card penalty-card"
+                        onclick="showPenaltyVisual('5s', '5 SECOND PENALTY', 'Minor offense (e.g., track limits violation, leaving the track and gaining advantage). Added to total race time at the end.')">
+                        <h3>5 Second Penalty</h3>
+                        <div class="penalty-type-visual type-5s">5S</div>
+                    </article>
+
+                    <article class="info-card penalty-card"
+                        onclick="showPenaltyVisual('10s', '10 SECOND PENALTY', 'More serious offense (e.g., causing a collision or unsafe release). Added to total race time at the end.')">
+                        <h3>10 Second Penalty</h3>
+                        <div class="penalty-type-visual type-10s">10S</div>
+                    </article>
+
+                    <article class="info-card penalty-card"
+                        onclick="showPenaltyVisual('drivethrough', 'DRIVE-THROUGH PENALTY', 'Enter the pits, drive through the pit lane at 80km/h, and immediately rejoin the track. (Time cost: ~20 seconds).')">
+                        <h3>Drive-Through</h3>
+                        <div class="penalty-type-visual type-dt">DT</div>
+                    </article>
+
+                    <article class="info-card penalty-card"
+                        onclick="showPenaltyVisual('stopgo', '10 SECOND STOP/GO', 'Enter the pits, stop for 10 seconds (no work allowed), then exit. (Time cost: ~30-35 seconds). Very severe.')">
+                        <h3>10s Stop/Go</h3>
+                        <div class="penalty-type-visual type-sg">S/G</div>
+                    </article>
+
+                </div>
+
+
+                <div class="info-grid">
+                    <article class="info-card" style="grid-column: 1 / -1; border-top: 3px solid var(--color-text);">
+                        <h3>The Referee (Stewards)</h3>
+                        <p style="font-size: 0.9rem;">The Stewards are the panel of four officials responsible for
+                            reviewing all incidents and applying the appropriate penalties (like the ones shown above)
+                            during and immediately after the race. They are the ultimate judicial authority on the race
+                            weekend.</p>
+                    </article>
+                </div>
+            </div>
+
+            <!-- P5: VIEWER GUIDE -->
+            <div id="content-guide" class="info-grid-container" role="tabpanel" style="display: none;">
+
+
+                <div class="track-viewer-container">
+                    <div class="track-header">
+                        <h3>Circuit Types</h3>
+                        <div class="track-controls">
+                            <button onclick="changeTrack('monza')" class="track-btn active">Power</button>
+                            <button onclick="changeTrack('monaco')" class="track-btn">Street</button>
+                            <button onclick="changeTrack('silverstone')" class="track-btn">Hybrid</button>
+                        </div>
+                    </div>
+
+                    <div class="track-display">
+
+                        <div id="track-monza" class="track-svg-container active-track">
+                            <img src="assets/track/monza.png" alt="Monza Circuit Map" class="track-img"
+                                onerror="this.src='https://placehold.co/600x300/F9FAFC/15151E?text=MONZA+CIRCUIT+MAP'">
+                            <div class="track-stats">
+                                <div class="stat-box"><strong>Monza (Power):</strong> Feature long straights and fast
+                                    sweeping corners. There are very few tight, slow turns.</div>
+                            </div>
+                        </div>
+
+
+                        <div id="track-monaco" class="track-svg-container">
+                            <img src="assets/track/monaco.png" alt="Monaco Circuit Map" class="track-img"
+                                onerror="this.src='https://placehold.co/600x300/F9FAFC/15151E?text=MONACO+CIRCUIT+MAP'">
+                            <div class="track-stats">
+                                <div class="stat-box"><strong>Monaco (Street):</strong> Tight, twisty, and narrow. The
+                                    surface is often bumpy, and the track is lined with unforgiving concrete barriers
+                                    rather than gravel traps or runoff areas.</div>
+                            </div>
+                        </div>
+
+
+                        <div id="track-silverstone" class="track-svg-container">
+                            <img src="assets/track/silverstone.png" alt="Silverstone Circuit Map" class="track-img"
+                                onerror="this.src='https://placehold.co/600x300/F9FAFC/15151E?text=SILVERSTONE+CIRCUIT+MAP'">
+                            <div class="track-stats">
+                                <div class="stat-box"><strong>Silverstone (Hybrid):</strong> Feature a mix of long
+                                    straights (Power) and complex, technical slow-speed sectors (Street).</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="tech-insight" style="margin-bottom: 2rem;">
+                    <h3
+                        style="border-bottom: 2px solid var(--color-primary); padding-bottom: 0.5rem; margin-bottom: 1rem;">
+                        Anatomy of a Circuit</h3>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+
+                        <div>
+                            <h4 style="color: var(--color-text); margin-bottom: 0.5rem;">1. The Three Sectors</h4>
+                            <p style="font-size: 0.9rem; line-height: 1.5;">
+                                Every Formula 1 track is virtually divided into <strong>3 Sectors</strong> (Sector 1,
+                                Sector 2, Sector 3).
+                            </p>
+                            <ul
+                                style="margin-top: 10px; font-size: 0.9rem; color: var(--color-dim); list-style: none; padding-left: 10px; border-left: 3px solid #ddd;">
+                                <li style="margin-bottom: 5px;"><strong>Why?</strong> It helps engineers analyze
+                                    performance. A car might be fast in Sector 1 (Straights) but slow in Sector 2
+                                    (Corners).</li>
+                                <li><strong>TV Graphics:</strong> This is why you see 3 colored boxes
+                                    (Purple/Green/Yellow) next to a driver's name.</li>
+                            </ul>
+                        </div>
+
+
+                        <div>
+                            <h4 style="color: var(--color-text); margin-bottom: 0.5rem;">2. DRS Zones</h4>
+                            <p style="font-size: 0.9rem; line-height: 1.5;">
+                                Specific straights are designated as "DRS Zones" to encourage overtaking. They work in
+                                two stages:
+                            </p>
+                            <ul style="margin-top: 10px; font-size: 0.9rem; color: var(--color-dim); list-style: none;">
+                                <li style="margin-bottom: 8px;">
+                                    <strong>📡 1. Detection Point:</strong> An electronic line on the track. It measures
+                                    the time gap. If you are &lt; 1 sec behind...
+                                </li>
+                                <li>
+                                    <strong>🚀 2. Activation Point:</strong> ...You can press the DRS button here to
+                                    open the wing.
+                                </li>
+                            </ul>
+                        </div>
+
+
+                        <div>
+                            <h4 style="color: var(--color-text); margin-bottom: 0.5rem;">3. The Speed Trap</h4>
+                            <p style="font-size: 0.9rem; line-height: 1.5;">
+                                A specific radar point, usually at the end of the longest straight, that records the
+                                <strong>Maximum Top Speed</strong> (V-Max).
+                            </p>
+                            <p style="font-size: 0.9rem; color: var(--color-dim); margin-top: 10px;">
+                                <strong>What it tells you:</strong> If a car is fastest here, they likely have a
+                                powerful engine or "Low Drag" setup (skinny wings), making them hard to overtake.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="tech-insight">
+                    <h3
+                        style="margin-bottom: 1.5rem; border-bottom: 2px solid var(--color-primary); padding-bottom: 0.5rem;">
+                        TV Graphics Decoder</h3>
+
+
+                    <div style="margin-bottom: 2rem;">
+                        <h4
+                            style="color: var(--color-dim); font-size: 0.9rem; text-transform: uppercase; margin-bottom: 0.5rem;">
+                            The "Live Timing" Screen (Qualifying & Analysis)</h4>
+                        <p style="font-size: 0.9rem; margin-bottom: 10px;">
+                            This detailed view shows the <strong>Sector Split</strong>. A lap is divided into 3 sectors
+                            (S1, S2, S3).
+                        </p>
+
+                        <div class="table-scroll-wrapper">
+                            <table class="timing-board">
+                                <thead>
+                                    <tr>
+                                        <th class="timing-header" style="width: 40px;">Pos</th>
+                                        <th class="timing-header" style="width: 50px;"></th>
+                                        <th class="timing-header" style="text-align: left;">Driver</th>
+                                        <th class="timing-header">Lap Time</th>
+                                        <th class="timing-header">S1</th>
+                                        <th class="timing-header">S2</th>
+                                        <th class="timing-header">S3</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr class="timing-row">
+                                        <td class="t-cell t-pos">1</td>
+                                        <td class="t-cell t-logo-col"><img src="assets/logos/ferrari.avif" alt="Ferrari"
+                                                class="team-logo-small"></td>
+                                        <td class="t-cell t-driver">HAM</td>
+                                        <td class="t-cell t-time-cell"><span
+                                                class="time-pill text-purple">1:07.934</span>
+                                        </td>
+                                        <td class="t-cell t-time-cell"><span class="time-pill text-yellow">17.498</span>
+                                        </td>
+                                        <td class="t-cell t-time-cell"><span class="time-pill text-purple">34.445</span>
+                                        </td>
+                                        <td class="t-cell t-time-cell"><span class="time-pill text-purple">15.991</span>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="timing-row">
+                                        <td class="t-cell t-pos">2</td>
+                                        <td class="t-cell t-logo-col"><img src="assets/logos/redbullracing.avif"
+                                                alt="Red Bull" class="team-logo-small"></td>
+                                        <td class="t-cell t-driver">VER</td>
+                                        <td class="t-cell t-time-cell"><span
+                                                class="time-pill text-white">1:08.645</span>
+                                        </td>
+                                        <td class="t-cell t-time-cell"><span class="time-pill text-yellow">17.736</span>
+                                        </td>
+                                        <td class="t-cell t-time-cell"><span class="time-pill text-green">34.646</span>
+                                        </td>
+                                        <td class="t-cell t-time-cell"><span class="time-pill text-yellow">16.263</span>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="timing-row">
+                                        <td class="t-cell t-pos">3</td>
+                                        <td class="t-cell t-logo-col"><img src="assets/logos/astonmartin.avif"
+                                                alt="Aston Martin" class="team-logo-small"></td>
+                                        <td class="t-cell t-driver">ALO</td>
+                                        <td class="t-cell t-time-cell"><span
+                                                class="time-pill text-white">1:08.527</span>
+                                        </td>
+                                        <td class="t-cell t-time-cell"><span class="time-pill text-green">17.606</span>
+                                        </td>
+                                        <td class="t-cell t-time-cell"><span class="time-pill text-yellow">34.869</span>
+                                        </td>
+                                        <td class="t-cell t-time-cell"><span class="time-pill text-green">16.052</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="legend-box">
+                            <div class="legend-item"><span class="time-pill text-purple">Purple</span>
+                                <span><strong>Fastest
+                                        Overall:</strong> The fastest time of <em>anyone</em> in the session.</span>
+                            </div>
+                            <div class="legend-item"><span class="time-pill text-green">Green</span>
+                                <span><strong>Personal
+                                        Best:</strong> Faster than their own previous lap.</span>
+                            </div>
+                            <div class="legend-item"><span class="time-pill text-yellow">Yellow</span> <span><strong>No
+                                        Improvement:</strong> Slower than their best.</span></div>
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <h4
+                            style="color: var(--color-dim); font-size: 0.9rem; text-transform: uppercase; margin-bottom: 0.5rem;">
+                            Sunday: The Race Tower (Sidebar)</h4>
+                        <p style="font-size: 0.9rem; margin-bottom: 10px;">Focus on <strong>Tire Status</strong> and
+                            <strong>Event Icons</strong>. This tells the story of strategy and drama.
+                        </p>
+
+
+                        <table class="timing-board race-tower-board">
+                            <thead>
+                                <tr>
+                                    <th class="timing-header">POS</th>
+                                    <th class="timing-header"></th>
+                                    <th class="timing-header" style="text-align: left;">Driver</th>
+                                    <th class="timing-header" style="text-align: center;">Gap</th>
+                                    <th class="timing-header" style="text-align: center;">Tire</th>
+                                    <th class="timing-header"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr class="timing-row">
+                                    <td class="t-cell t-pos">1</td>
+                                    <td class="t-cell t-logo"><img src="assets/logos/ferrari.avif" class="team-icon"
+                                            alt="Ferrari"></td>
+                                    <td class="t-cell t-driver">HAM</td>
+                                    <td class="t-cell t-interval" style="text-align:right;">INTERVAL</td>
+                                    <td class="t-cell t-time-cell">
+                                        <div class="tire-badge t-hard">H</div>
+                                    </td>
+                                    <td class="t-cell"></td>
+                                </tr>
+
+                                <tr class="timing-row">
+                                    <td class="t-cell t-pos">2</td>
+                                    <td class="t-cell t-logo"><img src="assets/logos/redbullracing.avif"
+                                            class="team-icon" alt="Red Bull"></td>
+                                    <td class="t-cell t-driver">VER</td>
+                                    <td class="t-cell t-interval" style="text-align:right;">+2.412</td>
+                                    <td class="t-cell t-time-cell">
+                                        <div class="tire-badge t-med">M</div>
+                                    </td>
+                                    <td class="t-cell"><span class="status-badge-fastest"><img
+                                                src="assets/logos/stopwatch.png" class="status-icon-small"
+                                                alt="Fastest Lap"></span></td>
+                                </tr>
+
+                                <tr class="timing-row">
+                                    <td class="t-cell t-pos">3</td>
+                                    <td class="t-cell t-logo"><img src="assets/logos/ferrari.avif" class="team-icon"
+                                            alt="Ferrari"></td>
+                                    <td class="t-cell t-driver">LEC</td>
+                                    <td class="t-cell t-interval" style="text-align:right;">+5.833</td>
+                                    <td class="t-cell t-time-cell">
+                                        <div class="tire-badge t-hard">H</div>
+                                    </td>
+                                    <td class="t-cell"></td>
+                                </tr>
+
+                                <tr class="timing-row">
+                                    <td class="t-cell t-pos">4</td>
+                                    <td class="t-cell t-logo"><img src="assets/logos/mclaren.avif" class="team-icon"
+                                            alt="McLaren"></td>
+                                    <td class="t-cell t-driver">NOR</td>
+                                    <td class="t-cell t-interval" style="text-align:right;">+8.109</td>
+                                    <td class="t-cell t-time-cell">
+                                        <div class="tire-badge t-med">M</div>
+                                    </td>
+                                    <td class="t-cell"></td>
+                                </tr>
+
+                                <tr class="timing-row">
+                                    <td class="t-cell t-pos">5</td>
+                                    <td class="t-cell t-logo"><img src="assets/logos/mercedes.avif" class="team-icon"
+                                            alt="Mercedes"></td>
+                                    <td class="t-cell t-driver">RUS</td>
+                                    <td class="t-cell t-interval" style="text-align:right;">+15.201</td>
+                                    <td class="t-cell t-time-cell">
+                                        <div class="tire-badge t-hard">H</div>
+                                    </td>
+                                    <td class="t-cell"><span class="status-badge-penalty">!</span></td>
+                                </tr>
+
+                                <tr class="timing-row">
+                                    <td class="t-cell t-pos">6</td>
+                                    <td class="t-cell t-logo"><img src="assets/logos/mclaren.avif" class="team-icon"
+                                            alt="McLaren"></td>
+                                    <td class="t-cell t-driver">PIA</td>
+                                    <td class="t-cell t-interval" style="text-align:right;">IN PIT</td>
+                                    <td class="t-cell t-time-cell">
+                                        <div class="tire-badge t-soft">S</div>
+                                    </td>
+                                    <td class="t-cell"><span class="status-badge-pit">P</span></td>
+                                </tr>
+
+                                <tr class="timing-row">
+                                    <td class="t-cell t-pos">7</td>
+                                    <td class="t-cell t-logo"><img src="assets/logos/astonmartin.avif" class="team-icon"
+                                            alt="Aston Martin"></td>
+                                    <td class="t-cell t-driver">ALO</td>
+                                    <td class="t-cell t-interval" style="text-align:right;">+22.450</td>
+                                    <td class="t-cell t-time-cell">
+                                        <div class="tire-badge t-hard">H</div>
+                                    </td>
+                                    <td class="t-cell"><span class="status-badge-investigation">!</span></td>
+                                </tr>
+
+                                <tr class="timing-row">
+                                    <td class="t-cell t-pos">8</td>
+                                    <td class="t-cell t-logo"><img src="assets/logos/williams.avif" class="team-icon"
+                                            alt="Williams"></td>
+                                    <td class="t-cell t-driver">SAI</td>
+                                    <td class="t-cell t-interval" style="text-align:right;">+24.112</td>
+                                    <td class="t-cell t-time-cell">
+                                        <div class="tire-badge t-med">M</div>
+                                    </td>
+                                    <td class="t-cell"></td>
+                                </tr>
+
+                                <tr class="timing-row">
+                                    <td class="t-cell t-pos">9</td>
+                                    <td class="t-cell t-logo"><img src="assets/logos/alpine.avif" class="team-icon"
+                                            alt="Alpine"></td>
+                                    <td class="t-cell t-driver">GAS</td>
+                                    <td class="t-cell t-interval" style="text-align:right;">+28.901</td>
+                                    <td class="t-cell t-time-cell">
+                                        <div class="tire-badge t-hard">H</div>
+                                    </td>
+                                    <td class="t-cell"></td>
+                                </tr>
+
+                                <tr class="timing-row">
+                                    <td class="t-cell t-pos">10</td>
+                                    <td class="t-cell t-logo"><img src="assets/logos/redbullracing.avif"
+                                            class="team-icon" alt="Red Bull"></td>
+                                    <td class="t-cell t-driver">TSU</td>
+                                    <td class="t-cell t-interval" style="text-align:right;">+31.555</td>
+                                    <td class="t-cell t-time-cell">
+                                        <div class="tire-badge t-med">M</div>
+                                    </td>
+                                    <td class="t-cell"></td>
+                                </tr>
+
+                                <tr class="timing-row">
+                                    <td class="t-cell t-pos">11</td>
+                                    <td class="t-cell t-logo"><img src="assets/logos/williams.avif" class="team-icon"
+                                            alt="Williams"></td>
+                                    <td class="t-cell t-driver">ALB</td>
+                                    <td class="t-cell t-interval" style="text-align:right;">+33.002</td>
+                                    <td class="t-cell t-time-cell">
+                                        <div class="tire-badge t-hard">H</div>
+                                    </td>
+                                    <td class="t-cell"></td>
+                                </tr>
+
+                                <tr class="timing-row">
+                                    <td class="t-cell t-pos">12</td>
+                                    <td class="t-cell t-logo"><img src="assets/logos/astonmartin.avif" class="team-icon"
+                                            alt="Aston Martin"></td>
+                                    <td class="t-cell t-driver">STR</td>
+                                    <td class="t-cell t-interval" style="text-align:right;">+35.888</td>
+                                    <td class="t-cell t-time-cell">
+                                        <div class="tire-badge t-med">M</div>
+                                    </td>
+                                    <td class="t-cell"></td>
+                                </tr>
+
+                                <tr class="timing-row">
+                                    <td class="t-cell t-pos">13</td>
+                                    <td class="t-cell t-logo"><img src="assets/logos/haas.avif" class="team-icon"
+                                            alt="Haas">
+                                    </td>
+                                    <td class="t-cell t-driver">OCO</td>
+                                    <td class="t-cell t-interval" style="text-align:right;">+40.123</td>
+                                    <td class="t-cell t-time-cell">
+                                        <div class="tire-badge t-hard">H</div>
+                                    </td>
+                                    <td class="t-cell"></td>
+                                </tr>
+
+                                <tr class="timing-row">
+                                    <td class="t-cell t-pos">14</td>
+                                    <td class="t-cell t-logo"><img src="assets/logos/racingbulls.avif" class="team-icon"
+                                            alt="RB"></td>
+                                    <td class="t-cell t-driver">LAW</td>
+                                    <td class="t-cell t-interval" style="text-align:right;">+45.678</td>
+                                    <td class="t-cell t-time-cell">
+                                        <div class="tire-badge t-soft">S</div>
+                                    </td>
+                                    <td class="t-cell"></td>
+                                </tr>
+
+                                <tr class="timing-row">
+                                    <td class="t-cell t-pos">15</td>
+                                    <td class="t-cell t-logo"><img src="assets/logos/mercedes.avif" class="team-icon"
+                                            alt="Mercedes"></td>
+                                    <td class="t-cell t-driver">ANT</td>
+                                    <td class="t-cell t-interval" style="text-align:right;">+50.001</td>
+                                    <td class="t-cell t-time-cell">
+                                        <div class="tire-badge t-med">M</div>
+                                    </td>
+                                    <td class="t-cell"></td>
+                                </tr>
+
+                                <tr class="timing-row">
+                                    <td class="t-cell t-pos">16</td>
+                                    <td class="t-cell t-logo"><img src="assets/logos/racingbulls.avif" class="team-icon"
+                                            alt="RB"></td>
+                                    <td class="t-cell t-driver">HAD</td>
+                                    <td class="t-cell t-interval" style="text-align:right;">+55.555</td>
+                                    <td class="t-cell t-time-cell">
+                                        <div class="tire-badge t-hard">H</div>
+                                    </td>
+                                    <td class="t-cell"></td>
+                                </tr>
+
+                                <tr class="timing-row">
+                                    <td class="t-cell t-pos">17</td>
+                                    <td class="t-cell t-logo"><img src="assets/logos/alpine.avif" class="team-icon"
+                                            alt="Alpine"></td>
+                                    <td class="t-cell t-driver">DOO</td>
+                                    <td class="t-cell t-interval" style="text-align:right;">+1 LAP</td>
+                                    <td class="t-cell t-time-cell">
+                                        <div class="tire-badge t-med">M</div>
+                                    </td>
+                                    <td class="t-cell"></td>
+                                </tr>
+
+                                <tr class="timing-row">
+                                    <td class="t-cell t-pos">18</td>
+                                    <td class="t-cell t-logo"><img src="assets/logos/haas.avif" class="team-icon"
+                                            alt="Haas">
+                                    </td>
+                                    <td class="t-cell t-driver">BEA</td>
+                                    <td class="t-cell t-interval" style="text-align:right;">+1 LAP</td>
+                                    <td class="t-cell t-time-cell">
+                                        <div class="tire-badge t-hard">H</div>
+                                    </td>
+                                    <td class="t-cell"></td>
+                                </tr>
+
+                                <tr class="timing-row">
+                                    <td class="t-cell t-pos">19</td>
+                                    <td class="t-cell t-logo"><img src="assets/logos/kicksauber.avif" class="team-icon"
+                                            alt="Sauber"></td>
+                                    <td class="t-cell t-driver">BOR</td>
+                                    <td class="t-cell t-interval" style="text-align:right;">+2 LAPS</td>
+                                    <td class="t-cell t-time-cell">
+                                        <div class="tire-badge t-soft">S</div>
+                                    </td>
+                                    <td class="t-cell"></td>
+                                </tr>
+
+                                <tr class="timing-row dnf-row">
+                                    <td class="t-cell t-pos">20</td>
+                                    <td class="t-cell t-logo"><img src="assets/logos/kicksauber.avif" class="team-icon"
+                                            alt="Sauber"></td>
+                                    <td class="t-cell t-driver">HUL</td>
+
+                                    <td class="t-cell t-interval" style="text-align:right;"><span
+                                            class="status-badge-out">OUT</span></td>
+                                    <td class="t-cell t-time-cell">
+                                        <div class="tire-badge t-med"></div>
+                                    </td>
+                                    <td class="t-cell"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="legend-box">
+                            <div class="legend-item"><span class="status-badge-fastest"><img
+                                        src="assets/logos/stopwatch.png" class="status-icon-small"
+                                        alt="Fastest Lap"></span> <strong>Fastest
+                                    Lap</strong></div>
+                            <div class="legend-item"><span class="status-badge-penalty">!</span>
+                                <strong>Penalty</strong>
+                            </div>
+                            <div class="legend-item"><span class="status-badge-investigation">!</span>
+                                <strong>Under Investigation</strong>
+                            </div>
+                            <div class="legend-item"><span class="status-badge-pit">P</span> <strong>In Pit</strong>
+                            </div>
+                            <div class="legend-item"><strong style="color:#141414;">OUT</strong>:&nbsp;
+                                <strong>DNF/DNS</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- P6: VOCABS -->
+            <div id="content-vocabs" class="info-grid-container" role="tabpanel" style="display: none;">
+
+                <div class="info-grid">
+
+                    <div class="info-card" style="text-align: left;">
+                        <div class="vocab-category">Driving Terms</div>
+
+                        <div class="vocab-item">
+                            <span class="vocab-term">Flying Lap</span>
+                            <span class="vocab-def">A lap driven at the absolute 100% limit to set the fastest possible
+                                time. Usually seen in Qualifying.</span>
+                        </div>
+
+                        <div class="vocab-item">
+                            <span class="vocab-term">Oversteer</span>
+                            <span class="vocab-def">When the rear of the car loses grip and slides out (like drifting).
+                                The driver must turn <em>into</em> the slide to correct it.</span>
+                        </div>
+
+                        <div class="vocab-item">
+                            <span class="vocab-term">Understeer</span>
+                            <span class="vocab-def">When the front tires lose grip and the car refuses to turn, sliding
+                                wide off the track despite the driver turning the wheel.</span>
+                        </div>
+
+                        <div class="vocab-item">
+                            <span class="vocab-term">Lock-Up</span>
+                            <span class="vocab-def">Braking too hard causing a wheel to stop rotating while the car is
+                                still moving. This creates white smoke and ruins the tire (flat spot).</span>
+                        </div>
+                    </div>
+
+
+                    <div class="info-card" style="text-align: left;">
+                        <div class="vocab-category">Physics & Aero</div>
+
+                        <div class="vocab-item">
+                            <span class="vocab-term">Slipstream (Tow)</span>
+                            <span class="vocab-def">Driving closely behind another car on a straight. The lead car
+                                punches a hole in the air, allowing the following car to drive faster due to less air
+                                resistance.</span>
+                        </div>
+
+                        <div class="vocab-item">
+                            <span class="vocab-term">Dirty Air</span>
+                            <span class="vocab-def">The turbulent, hot air left behind by a car. It reduces aerodynamic
+                                grip for the car trying to follow, making it hard to stay close in corners.</span>
+                        </div>
+
+                        <div class="vocab-item">
+                            <span class="vocab-term">Marbles</span>
+                            <span class="vocab-def">Small pieces of rubber that are shredded off tires and accumulate
+                                off the racing line. Driving on them feels like driving on ice.</span>
+                        </div>
+                    </div>
+
+
+                    <div class="info-card" style="text-align: left;">
+                        <div class="vocab-category">The Event</div>
+
+                        <div class="vocab-item">
+                            <span class="vocab-term">Paddock</span>
+                            <span class="vocab-def">The restricted area behind the pit garages where teams have their
+                                motorhomes, drivers prepare, and media interviews happen.</span>
+                        </div>
+
+                        <div class="vocab-item">
+                            <span class="vocab-term">Parc Fermé</span>
+                            <span class="vocab-def">French for "Closed Park". A rule status where cars are impounded and
+                                mechanics are forbidden from touching or modifying them (usually overnight).</span>
+                        </div>
+
+                        <div class="vocab-item">
+                            <span class="vocab-term">Box</span>
+                            <span class="vocab-def">Short for "Boxenstopp". The radio command telling a driver to come
+                                into the pit lane immediately.</span>
+                        </div>
+
+                        <div class="vocab-item">
+                            <span class="vocab-term">Apex</span>
+                            <span class="vocab-def">The innermost point of a curve or corner. Hitting the apex allows
+                                the car to take the straightest, fastest line through a turn.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- S3: QUIZ -->
+        <section id="quiz" aria-labelledby="quiz-title">
+            <div class="garage-header" style="text-align: center;">
+                <h2 id="quiz-title">Superlicense Test</h2>
+                <p>Verify your knowledge.</p>
+            </div>
+
+            <form class="form-container" onsubmit="submitQuiz(event)">
+                <div class="form-group">
+                    <label for="cadet-name">Cadet ID / Name</label>
+                    <input type="text" id="cadet-name" name="cadet-name" placeholder="Enter Callsign..." required>
+                </div>
+
+
+                <div class="form-group">
+                    <label>Q1: Which flag indicates a full Session Stopped?</label>
+                    <div class="radio-group">
+                        <label class="radio-option"><input type="radio" name="q1_flag" value="yellow"> Yellow</label>
+                        <label class="radio-option"><input type="radio" name="q1_flag" value="red"> Red</label>
+                        <label class="radio-option"><input type="radio" name="q1_flag" value="green"> Green</label>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label>Q2: Which compound (C-scale) is the Softest compound?</label>
+                    <div class="radio-group">
+                        <label class="radio-option"><input type="radio" name="q2_tire_compound" value="c1"> C1</label>
+                        <label class="radio-option"><input type="radio" name="q2_tire_compound" value="c3"> C3</label>
+                        <label class="radio-option"><input type="radio" name="q2_tire_compound" value="c5"> C5</label>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label>Q3: Which penalty type requires a car to lose two pit stop windows?</label>
+                    <div class="radio-group">
+                        <label class="radio-option"><input type="radio" name="q3_penalty" value="5s"> 5 Second
+                            Penalty</label>
+                        <label class="radio-option"><input type="radio" name="q3_penalty" value="drivethrough">
+                            Drive-Through Penalty</label>
+                        <label class="radio-option"><input type="radio" name="q3_penalty" value="stopgo"> 10s Stop/Go
+                            Penalty</label>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label>Q4: Which strategy relies on pitting before the leader?</label>
+                    <div class="radio-group">
+                        <label class="radio-option"><input type="radio" name="q4_strategy" value="undercut">
+                            Undercut</label>
+                        <label class="radio-option"><input type="radio" name="q4_strategy" value="overcut">
+                            Overcut</label>
+                        <label class="radio-option"><input type="radio" name="q4_strategy" value="two_stopper">
+                            Two-Stopper</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="fui-button" style="width: 100%">Submit Data</button>
+                <div id="success-msg" class="success-message" role="alert">
+                    <strong>✓ Data Uplinked</strong><br>License Granted.
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content" style="max-width: 800px; margin: 0 auto;">
+            <p style="font-weight: 700; margin-bottom: 0.5rem; letter-spacing: 1px;">GRID 101 // EDUCATIONAL INTERFACE
+                // SEMANTIC HTML5</p>
+            <p style="font-size: 0.75rem; opacity: 0.8; line-height: 1.4; margin-bottom: 0.5rem;">
+                This website is unofficial and is not associated in any way with the Formula 1 companies. F1, FORMULA
+                ONE, FORMULA 1, FIA FORMULA ONE WORLD CHAMPIONSHIP, GRAND PRIX and related marks are trade marks of
+                Formula One Licensing B.V.
+            </p>
+            <p style="font-size: 0.75rem; opacity: 0.8;">
+                All assets are property of their respective owners. Designed for educational purposes.
+            </p>
+        </div>
+    </footer>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
